@@ -1,6 +1,6 @@
 {
   "name": "evo-it-custom-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -49,7 +49,7 @@
     ]
   },
   "description": "Shared EVO-IT components",
-  "main": "build/index.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MrRainesE/shared-components.git"
