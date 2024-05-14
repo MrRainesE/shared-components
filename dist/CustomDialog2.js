@@ -63,7 +63,7 @@ const useDebounce = (value, delay) => {
  * @returns {*} Het Paper element.
  */
 const PaperComponent = props => {
-  const myRef = (0, _react.useRef)();
+  // const myRef = useRef();
   // const realProps = { ...enhancedProps };
   // delete realProps.setOffsetY;
   // const [y, setY] = useState();
@@ -86,9 +86,7 @@ const PaperComponent = props => {
     handle: "".concat("#" + props.children[0].props.id),
     cancel: '[class*="MuiDialogContent-root"]',
     onDrag: e => setY(e.y)
-  }, /*#__PURE__*/_react.default.createElement(_material.Paper, _extends({
-    ref: myRef
-  }, realProps)));
+  }, /*#__PURE__*/_react.default.createElement(_material.Paper, props));
 };
 
 /**
