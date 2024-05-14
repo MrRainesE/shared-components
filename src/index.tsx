@@ -14,3 +14,4 @@
 // reportWebVitals();
 
 export {default } from './CustomDialog'
+export {default as CustomDialog2 } from './CustomDialog2'
