@@ -13,4 +13,4 @@
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-export {default as CustomDialog} from './CustomDialog'
+export {default } from './CustomDialog'
