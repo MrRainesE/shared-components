@@ -1,38 +1,54 @@
-/*
-Dit is de customDialog component. Deze component kan overal geimplementeerd worden en gevuld met een eigen component. Daarnaast zijn er een aantal mogelijkheden om in te stellen;
-een variant=> 'permanent'| 'persistent'| 'temporary'
-- positie => 'bottom'| 'left'| 'right'| 'top'
-- kleur => willekeurig string van een kleur
-- width => '100%' | 'auto'| x aantal pixel
-- height => '100%' | 'auto'| x aantal pixel
-- component => een eigen component die gerenderd wordt in de dialog content
-- open => boolean die aangeeft of de drawer (niet) getoond mag worden
-- handleClose => event die zorgt ervoor dat de dialoog (niet) getoond wordt
-- handleSubmit => event die zorgt ervoor dat de submit knop wordt geklikt
-- paperProps => {height:100,width:200 etc},
-- defaultButtons =>[{label:verwijderen,isPrimary:false}] => mag ingevuld worden met meer knoppen,
-- extraButton => extra component die toevoegd moet worden in de actions ,
-- title => titel van de dialoog,
-- titleColor => titel tekst kleur,
-- backgroundColor => achtergrond van de dialoog titel,
-- closeOnExit => bij weg klikken dialoog sluiten,
-- closeWithIcon => sluiten icoon tonen,
-- draggable => maak de dialoog schuifbaar,
-- animated => open de dialoog met een slide animatie,
-- id => id van de dialoog,
-
-changes:
-RE init
-fullScreen => maak dialog fullscreen. boolean
-
-*/
+/**
+ * Dit is de CustomDialog component. Deze component kan overal geïmplementeerd worden en gevuld met een eigen component.
+ * Daarnaast zijn er een aantal mogelijkheden om in te stellen:
+ * - variant: 'permanent' | 'persistent' | 'temporary'
+ * - positie: 'bottom' | 'left' | 'right' | 'top'
+ * - kleur: willekeurig string van een kleur
+ * - width: '100%' | 'auto' | x aantal pixel
+ * - height: '100%' | 'auto' | x aantal pixel
+ * - component: een eigen component die gerenderd wordt in de dialog content
+ * - open: boolean die aangeeft of de drawer (niet) getoond mag worden
+ * - handleClose: event die zorgt ervoor dat de dialoog (niet) getoond wordt
+ * - handleSubmit: event die zorgt ervoor dat de submit knop wordt geklikt
+ * - paperProps: { height: 100, width: 200 etc }
+ * - defaultButtons: [{ label: 'verwijderen', isPrimary: false }] => mag ingevuld worden met meer knoppen
+ * - extraButton: extra component die toegevoegd moet worden in de actions
+ * - title: titel van de dialoog
+ * - titleColor: titel tekst kleur
+ * - backgroundColor: achtergrond van de dialoog titel
+ * - closeOnExit: bij weg klikken dialoog sluiten
+ * - closeWithIcon: sluiten icoon tonen
+ * - draggable: maak de dialoog schuifbaar
+ * - animated: open de dialoog met een slide animatie
+ * - id: id van de dialoog
+ * - fullScreen: maak dialog fullscreen. boolean
+ */
 import { forwardRef, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { useTranslation } from "react-i18next";
 import { Close } from "@mui/icons-material";
 import PropTypes from "prop-types";
-import { useMediaQuery, useTheme ,Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, Slide, Typography, Button, IconButton} from "@mui/material";
+import {
+    useMediaQuery,
+    useTheme,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Grid,
+    Paper,
+    Slide,
+    Typography,
+    Button,
+    IconButton
+} from "@mui/material";
 
+/**
+ * Hook om debounce toe te passen op een waarde.
+ * @param {*} value - De waarde om te debounce.
+ * @param {number} delay - De vertragingstijd in milliseconden.
+ * @returns {*} De gedebounceerde waarde.
+ */
 const useDebounce = (value, delay) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
@@ -49,6 +65,11 @@ const useDebounce = (value, delay) => {
     return debouncedValue;
 };
 
+/**
+ * Component voor het Paper element met drag functionaliteit.
+ * @param {*} enhancedProps - Versterkte eigenschappen.
+ * @returns {*} Het Paper element.
+ */
 const PaperComponent = (enhancedProps) => {
     const myRef = useRef();
     const realProps = { ...enhancedProps };
@@ -56,12 +77,12 @@ const PaperComponent = (enhancedProps) => {
     const [y, setY] = useState();
     const debouncedValue = useDebounce(y, 250);
 
-    //zorgt ervoor dat de y wordt bepaald als er wordt gedragged
+    // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
     useEffect(() => {
         enhancedProps?.setOffsetY && enhancedProps.setOffsetY(debouncedValue);
     }, [debouncedValue]);
 
-    // zorgt ervoor dat de y wordt bepaald als de dialoog opent
+    // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
     useEffect(() => {
         const y = myRef.current?.getBoundingClientRect().y;
         if (y) {
@@ -80,42 +101,51 @@ const PaperComponent = (enhancedProps) => {
     );
 };
 
+/**
+ * Transitie component voor de dialoog.
+ * @param {*} props - De eigenschappen.
+ * @param {*} ref - De referentie.
+ * @returns {*} De transitie component.
+ */
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction={"up"} ref={ref} {...props} />;
 });
 
-export default function CustomDialog2({
-    fullScreen,
-    defaultButtons,
-    extraButton,
-    content,
-    paperProps,
-    open,
-    handleClose,
-    handleSubmit,
-    closeOnExit,
-    closeWithIcon,
-    title,
-    draggable,
-    animated,
-    backgroundColor,
-    titleColor,
-    id,
-    maxWidth,
-    fullWidth,
-    hidebackdrop,
-    zIndex,
-    contentStyle,
-    dialogactionStyle,
-    setOffsetY,
-}) {
-    const isMobile = IsMobile();
+/**
+ * CustomDialog component.
+ * @param {*} props - De eigenschappen.
+ * @returns {*} De CustomDialog component.
+ */
+export default function CustomDialog2(props) {
+    const {
+        fullScreen,
+        defaultButtons,
+        extraButton,
+        content,
+        paperProps,
+        open,
+        handleClose,
+        handleSubmit,
+        closeOnExit,
+        closeWithIcon,
+        title,
+        draggable,
+        animated,
+        backgroundColor,
+        titleColor,
+        id,
+        maxWidth,
+        fullWidth,
+        hidebackdrop,
+        zIndex,
+        contentStyle,
+        dialogactionStyle,
+        setOffsetY,
+    } = props;
     const { t } = useTranslation();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'lg'));
-    const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-
+   
     return (
         <Dialog
             fullScreen={fullScreen}
@@ -147,14 +177,14 @@ export default function CustomDialog2({
                             <Typography variant="h4">{title}</Typography>
                         </Grid>
                         <Grid item>
-                            <CustomIconButton
+                            <IconButton
                                 tooltipTitle={t("general:dialog.buttons.close")}
                                 style={{ color: "white" }}
                                 size="small"
                                 onClick={() => handleClose()}
                             >
                                 <Close />
-                            </CustomIconButton>
+                            </IconButton>
                         </Grid>
                     </Grid>
                 ) : (
@@ -169,11 +199,11 @@ export default function CustomDialog2({
             <DialogActions style={{ ...dialogactionStyle }}>
                 {extraButton}
                 {defaultButtons
-                    // toon altijd de opslaan/toevoegen knop als eerste
+                    // Toon altijd de opslaan/toevoegen knop als eerste.
                     ?.sort((x) => (x ? 1 : -1))
                     ?.map((button) => {
                         return (
-                            <CustomButton
+                            <Button
                                 key={button?.label}
                                 disabled={button.disabled}
                                 variant={button.isPrimary ? "outlined" : "text"}
@@ -187,13 +217,14 @@ export default function CustomDialog2({
                                 }}
                             >
                                 {button.label}
-                            </CustomButton>
+                            </Button>
                         );
                     })}
             </DialogActions>
         </Dialog>
     );
 }
+
 CustomDialog2.propTypes = {
     defaultButtons: PropTypes.array.isRequired,
     extraButton: PropTypes.node,

@@ -11,34 +11,37 @@ var _iconsMaterial = require("@mui/icons-material");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /*
-Dit is de customDialog component. Deze component kan overal geimplementeerd worden en gevuld met een eigen component. Daarnaast zijn er een aantal mogelijkheden om in te stellen;
-een variant=> 'permanent'| 'persistent'| 'temporary'
-- positie => 'bottom'| 'left'| 'right'| 'top'
-- kleur => willekeurig string van een kleur
-- width => '100%' | 'auto'| x aantal pixel
-- height => '100%' | 'auto'| x aantal pixel
-- component => een eigen component die gerenderd wordt in de dialog content
-- open => boolean die aangeeft of de drawer (niet) getoond mag worden
-- handleClose => event die zorgt ervoor dat de dialoog (niet) getoond wordt
-- handleSubmit => event die zorgt ervoor dat de submit knop wordt geklikt
-- paperProps => {height:100,width:200 etc},
-- defaultButtons =>[{label:verwijderen,isPrimary:false}] => mag ingevuld worden met meer knoppen,
-- extraButton => extra component die toevoegd moet worden in de actions ,
-- title => titel van de dialoog,
-- titleColor => titel tekst kleur,
-- backgroundColor => achtergrond van de dialoog titel,
-- closeOnExit => bij weg klikken dialoog sluiten,
-- closeWithIcon => sluiten icoon tonen,
-- draggable => maak de dialoog schuifbaar,
-- animated => open de dialoog met een slide animatie,
-- id => id van de dialoog,
-
-changes:
-RE init
-fullScreen => maak dialog fullscreen. boolean
-
-*/
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /**
+ * Dit is de CustomDialog component. Deze component kan overal geïmplementeerd worden en gevuld met een eigen component.
+ * Daarnaast zijn er een aantal mogelijkheden om in te stellen:
+ * - variant: 'permanent' | 'persistent' | 'temporary'
+ * - positie: 'bottom' | 'left' | 'right' | 'top'
+ * - kleur: willekeurig string van een kleur
+ * - width: '100%' | 'auto' | x aantal pixel
+ * - height: '100%' | 'auto' | x aantal pixel
+ * - component: een eigen component die gerenderd wordt in de dialog content
+ * - open: boolean die aangeeft of de drawer (niet) getoond mag worden
+ * - handleClose: event die zorgt ervoor dat de dialoog (niet) getoond wordt
+ * - handleSubmit: event die zorgt ervoor dat de submit knop wordt geklikt
+ * - paperProps: { height: 100, width: 200 etc }
+ * - defaultButtons: [{ label: 'verwijderen', isPrimary: false }] => mag ingevuld worden met meer knoppen
+ * - extraButton: extra component die toegevoegd moet worden in de actions
+ * - title: titel van de dialoog
+ * - titleColor: titel tekst kleur
+ * - backgroundColor: achtergrond van de dialoog titel
+ * - closeOnExit: bij weg klikken dialoog sluiten
+ * - closeWithIcon: sluiten icoon tonen
+ * - draggable: maak de dialoog schuifbaar
+ * - animated: open de dialoog met een slide animatie
+ * - id: id van de dialoog
+ * - fullScreen: maak dialog fullscreen. boolean
+ */
+/**
+ * Hook om debounce toe te passen op een waarde.
+ * @param {*} value - De waarde om te debounce.
+ * @param {number} delay - De vertragingstijd in milliseconden.
+ * @returns {*} De gedebounceerde waarde.
+ */
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = (0, _react.useState)(value);
   (0, _react.useEffect)(() => {
@@ -51,6 +54,12 @@ const useDebounce = (value, delay) => {
   }, [value, delay]);
   return debouncedValue;
 };
+
+/**
+ * Component voor het Paper element met drag functionaliteit.
+ * @param {*} enhancedProps - Versterkte eigenschappen.
+ * @returns {*} Het Paper element.
+ */
 const PaperComponent = enhancedProps => {
   var _myRef$current2;
   const myRef = (0, _react.useRef)();
@@ -61,12 +70,12 @@ const PaperComponent = enhancedProps => {
   const [y, setY] = (0, _react.useState)();
   const debouncedValue = useDebounce(y, 250);
 
-  //zorgt ervoor dat de y wordt bepaald als er wordt gedragged
+  // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
   (0, _react.useEffect)(() => {
     (enhancedProps === null || enhancedProps === void 0 ? void 0 : enhancedProps.setOffsetY) && enhancedProps.setOffsetY(debouncedValue);
   }, [debouncedValue]);
 
-  // zorgt ervoor dat de y wordt bepaald als de dialoog opent
+  // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
   (0, _react.useEffect)(() => {
     var _myRef$current;
     const y = (_myRef$current = myRef.current) === null || _myRef$current === void 0 ? void 0 : _myRef$current.getBoundingClientRect().y;
@@ -82,15 +91,28 @@ const PaperComponent = enhancedProps => {
     ref: myRef
   }, realProps)));
 };
+
+/**
+ * Transitie component voor de dialoog.
+ * @param {*} props - De eigenschappen.
+ * @param {*} ref - De referentie.
+ * @returns {*} De transitie component.
+ */
 const Transition = /*#__PURE__*/(0, _react.forwardRef)(function Transition(props, ref) {
   return /*#__PURE__*/React.createElement(_material.Slide, _extends({
     direction: "up",
     ref: ref
   }, props));
 });
-function CustomDialog2(_ref) {
+
+/**
+ * CustomDialog component.
+ * @param {*} props - De eigenschappen.
+ * @returns {*} De CustomDialog component.
+ */
+function CustomDialog2(props) {
   var _defaultButtons$sort;
-  let {
+  const {
     fullScreen,
     defaultButtons,
     extraButton,
@@ -114,15 +136,12 @@ function CustomDialog2(_ref) {
     contentStyle,
     dialogactionStyle,
     setOffsetY
-  } = _ref;
-  const isMobile = IsMobile();
+  } = props;
   const {
     t
   } = (0, _reactI18next.useTranslation)();
   const theme = (0, _material.useTheme)();
   const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down('sm'));
-  const isMediumScreen = (0, _material.useMediaQuery)(theme.breakpoints.between('md', 'lg'));
-  const isLargeScreen = (0, _material.useMediaQuery)(theme.breakpoints.up('lg'));
   return /*#__PURE__*/React.createElement(_material.Dialog, {
     fullScreen: fullScreen,
     id: id,
@@ -165,7 +184,7 @@ function CustomDialog2(_ref) {
     variant: "h4"
   }, title)), /*#__PURE__*/React.createElement(_material.Grid, {
     item: true
-  }, /*#__PURE__*/React.createElement(CustomIconButton, {
+  }, /*#__PURE__*/React.createElement(_material.IconButton, {
     tooltipTitle: t("general:dialog.buttons.close"),
     style: {
       color: "white"
@@ -182,13 +201,13 @@ function CustomDialog2(_ref) {
       ...dialogactionStyle
     }
   }, extraButton, defaultButtons
-  // toon altijd de opslaan/toevoegen knop als eerste
+  // Toon altijd de opslaan/toevoegen knop als eerste.
   === null || defaultButtons
-  // toon altijd de opslaan/toevoegen knop als eerste
+  // Toon altijd de opslaan/toevoegen knop als eerste.
   === void 0 || (_defaultButtons$sort = defaultButtons
-  // toon altijd de opslaan/toevoegen knop als eerste
+  // Toon altijd de opslaan/toevoegen knop als eerste.
   .sort(x => x ? 1 : -1)) === null || _defaultButtons$sort === void 0 ? void 0 : _defaultButtons$sort.map(button => {
-    return /*#__PURE__*/React.createElement(CustomButton, {
+    return /*#__PURE__*/React.createElement(_material.Button, {
       key: button === null || button === void 0 ? void 0 : button.label,
       disabled: button.disabled,
       variant: button.isPrimary ? "outlined" : "text",
