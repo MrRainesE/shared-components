@@ -25,7 +25,6 @@
  */
 import { forwardRef, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
-import { useTranslation } from "react-i18next";
 import { Close } from "@mui/icons-material";
 import PropTypes from "prop-types";
 import {
@@ -142,7 +141,6 @@ export default function CustomDialog2(props) {
         dialogactionStyle,
         setOffsetY,
     } = props;
-    const { t } = useTranslation();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
    
@@ -178,7 +176,7 @@ export default function CustomDialog2(props) {
                         </Grid>
                         <Grid item>
                             <IconButton
-                                tooltipTitle={t("general:dialog.buttons.close")}
+                                // tooltipTitle={t("general:dialog.buttons.close")}
                                 style={{ color: "white" }}
                                 size="small"
                                 onClick={() => handleClose()}

@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _reactDraggable = _interopRequireDefault(require("react-draggable"));
-var _reactI18next = require("react-i18next");
 var _material = require("@mui/material");
 var _iconsMaterial = require("@mui/icons-material");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -87,9 +86,6 @@ const CustomDialog = _ref => {
     dialogactionStyle,
     setOffsetY
   } = _ref;
-  const {
-    t
-  } = (0, _reactI18next.useTranslation)();
   const theme = (0, _material.useTheme)();
   const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down('sm'));
   const isMediumScreen = (0, _material.useMediaQuery)(theme.breakpoints.between('md', 'lg'));
@@ -137,7 +133,7 @@ const CustomDialog = _ref => {
   }, title)), /*#__PURE__*/_react.default.createElement(_material.Grid, {
     item: true
   }, /*#__PURE__*/_react.default.createElement(_material.Tooltip, {
-    title: t("general:dialog.buttons.close")
+    title: "close"
   }, /*#__PURE__*/_react.default.createElement(_material.IconButton, {
     style: {
       color: "white"

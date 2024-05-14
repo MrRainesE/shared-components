@@ -1,6 +1,5 @@
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
-import { useTranslation } from "react-i18next";
 import { 
     Button, 
     Dialog, 
@@ -123,7 +122,6 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
     dialogactionStyle,
     setOffsetY,
 }) => {
-    const { t } = useTranslation();
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const isMediumScreen = useMediaQuery(theme.breakpoints.between('md', 'lg'));
@@ -160,7 +158,7 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
                             <Typography variant="h4">{title}</Typography>
                         </Grid>
                         <Grid item>
-                            <Tooltip title={t("general:dialog.buttons.close")}>
+                            <Tooltip title={"close"}>
                                 <IconButton style={{ color: "white" }} size="small" onClick={handleClose}>
                                     <Close />
                                 </IconButton>

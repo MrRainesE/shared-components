@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = CustomDialog2;
 var _react = require("react");
 var _reactDraggable = _interopRequireDefault(require("react-draggable"));
-var _reactI18next = require("react-i18next");
 var _iconsMaterial = require("@mui/icons-material");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
@@ -137,9 +136,6 @@ function CustomDialog2(props) {
     dialogactionStyle,
     setOffsetY
   } = props;
-  const {
-    t
-  } = (0, _reactI18next.useTranslation)();
   const theme = (0, _material.useTheme)();
   const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down('sm'));
   return /*#__PURE__*/React.createElement(_material.Dialog, {
@@ -184,8 +180,9 @@ function CustomDialog2(props) {
     variant: "h4"
   }, title)), /*#__PURE__*/React.createElement(_material.Grid, {
     item: true
-  }, /*#__PURE__*/React.createElement(_material.IconButton, {
-    tooltipTitle: t("general:dialog.buttons.close"),
+  }, /*#__PURE__*/React.createElement(_material.IconButton
+  // tooltipTitle={t("general:dialog.buttons.close")}
+  , {
     style: {
       color: "white"
     },
