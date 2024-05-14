@@ -72,7 +72,7 @@ const useDebounce = (value, delay) => {
  * @returns {*} Het Paper element.
  */
 const PaperComponent = (props) => {
-    const myRef = useRef();
+    // const myRef = useRef();
     // const realProps = { ...enhancedProps };
     // delete realProps.setOffsetY;
     // const [y, setY] = useState();
@@ -97,7 +97,7 @@ const PaperComponent = (props) => {
             cancel={'[class*="MuiDialogContent-root"]'}
             onDrag={(e) => setY(e.y)}
         >
-            <Paper ref={myRef} {...realProps} />
+            <Paper {...props} />
         </Draggable>
     );
 };
