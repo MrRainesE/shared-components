@@ -2,6 +2,7 @@
 
 var _react = require("@testing-library/react");
 var _CustomDialog = _interopRequireDefault(require("../CustomDialog2"));
+var _react2 = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 describe('CustomDialog2', () => {
   it('renders with title and content', () => {
@@ -9,9 +10,9 @@ describe('CustomDialog2', () => {
     const handleSubmit = jest.fn();
     const {
       getByText
-    } = (0, _react.render)( /*#__PURE__*/React.createElement(_CustomDialog.default, {
+    } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
       title: "Test Dialog",
-      content: /*#__PURE__*/React.createElement("div", null, "Test Content"),
+      content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
       handleClose: handleClose,
       handleSubmit: handleSubmit,
@@ -28,9 +29,9 @@ describe('CustomDialog2', () => {
     const handleSubmit = jest.fn();
     const {
       getByText
-    } = (0, _react.render)( /*#__PURE__*/React.createElement(_CustomDialog.default, {
+    } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
       title: "Test Dialog",
-      content: /*#__PURE__*/React.createElement("div", null, "Test Content"),
+      content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
       handleClose: handleClose,
       handleSubmit: handleSubmit,
@@ -47,9 +48,9 @@ describe('CustomDialog2', () => {
     const handleSubmit = jest.fn();
     const {
       getByText
-    } = (0, _react.render)( /*#__PURE__*/React.createElement(_CustomDialog.default, {
+    } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
       title: "Test Dialog",
-      content: /*#__PURE__*/React.createElement("div", null, "Test Content"),
+      content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
       handleClose: handleClose,
       handleSubmit: handleSubmit,
@@ -66,9 +67,9 @@ describe('CustomDialog2', () => {
     const handleSubmit = jest.fn();
     const {
       getByText
-    } = (0, _react.render)( /*#__PURE__*/React.createElement(_CustomDialog.default, {
+    } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
       title: "Test Dialog",
-      content: /*#__PURE__*/React.createElement("div", null, "Test Content"),
+      content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
       handleClose: handleClose,
       handleSubmit: handleSubmit,
@@ -86,9 +87,9 @@ describe('CustomDialog2', () => {
     const handleSubmit = jest.fn();
     const {
       getByTestId
-    } = (0, _react.render)( /*#__PURE__*/React.createElement(_CustomDialog.default, {
+    } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
       title: "Test Dialog",
-      content: /*#__PURE__*/React.createElement("div", null, "Test Content"),
+      content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
       handleClose: handleClose,
       handleSubmit: handleSubmit,
