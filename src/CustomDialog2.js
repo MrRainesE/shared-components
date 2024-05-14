@@ -117,32 +117,31 @@ const Transition = forwardRef(function Transition(props, ref) {
  * @param {*} props - De eigenschappen.
  * @returns {*} De CustomDialog component.
  */
-export default function CustomDialog2(props) {
-    const {
-        fullScreen,
-        defaultButtons,
-        extraButton,
-        content,
-        paperProps,
-        open,
-        handleClose,
-        handleSubmit,
-        closeOnExit,
-        closeWithIcon,
-        title,
-        draggable,
-        animated,
-        backgroundColor,
-        titleColor,
-        id,
-        maxWidth,
-        fullWidth,
-        hidebackdrop,
-        zIndex,
-        contentStyle,
-        dialogactionStyle,
-        setOffsetY,
-    } = props;
+export default function CustomDialog2({
+    fullScreen,
+    defaultButtons,
+    extraButton,
+    content,
+    paperProps,
+    open,
+    handleClose,
+    handleSubmit,
+    closeOnExit,
+    closeWithIcon,
+    title,
+    draggable,
+    animated,
+    backgroundColor,
+    titleColor,
+    id,
+    maxWidth,
+    fullWidth,
+    hidebackdrop,
+    zIndex,
+    contentStyle,
+    dialogactionStyle,
+    setOffsetY,
+}) {
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
    
     return (
@@ -154,7 +153,7 @@ export default function CustomDialog2(props) {
             fullWidth={fullWidth}
             aria-labelledby={id}
             TransitionComponent={animated ? Transition : undefined}
-            PaperComponent={draggable ? (isSmallScreen ? Paper : PaperComponent) : Paper}
+            PaperComponent={draggable ? (isSmallScreen ? Paper : PaperComponent) : undefined}
             keepMounted
             open={open}
             onClose={closeOnExit ? handleClose : null}

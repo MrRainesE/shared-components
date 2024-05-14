@@ -107,9 +107,9 @@ const Transition = /*#__PURE__*/(0, _react.forwardRef)(function Transition(props
  * @param {*} props - De eigenschappen.
  * @returns {*} De CustomDialog component.
  */
-function CustomDialog2(props) {
+function CustomDialog2(_ref) {
   var _defaultButtons$sort;
-  const {
+  let {
     fullScreen,
     defaultButtons,
     extraButton,
@@ -133,7 +133,7 @@ function CustomDialog2(props) {
     contentStyle,
     dialogactionStyle,
     setOffsetY
-  } = props;
+  } = _ref;
   const isSmallScreen = (0, _material.useMediaQuery)(_theme.default.breakpoints.down('sm'));
   return /*#__PURE__*/_react.default.createElement(_material.ThemeProvider, {
     theme: _theme.default
@@ -144,7 +144,7 @@ function CustomDialog2(props) {
     fullWidth: fullWidth,
     "aria-labelledby": id,
     TransitionComponent: animated ? Transition : undefined,
-    PaperComponent: draggable ? isSmallScreen ? _material.Paper : PaperComponent : _material.Paper,
+    PaperComponent: draggable ? isSmallScreen ? _material.Paper : PaperComponent : undefined,
     keepMounted: true,
     open: open,
     onClose: closeOnExit ? handleClose : null,
