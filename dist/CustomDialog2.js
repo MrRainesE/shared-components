@@ -63,7 +63,6 @@ const useDebounce = (value, delay) => {
  * @returns {*} Het Paper element.
  */
 const PaperComponent = props => {
-  var _props$children;
   // const myRef = useRef();
   // const realProps = { ...enhancedProps };
   // delete realProps.setOffsetY;
@@ -84,7 +83,7 @@ const PaperComponent = props => {
   // }, [myRef.current?.getBoundingClientRect()]);
 
   return /*#__PURE__*/_react.default.createElement(_reactDraggable.default, {
-    handle: "".concat("#" + (props === null || props === void 0 || (_props$children = props.children) === null || _props$children === void 0 || (_props$children = _props$children[0]) === null || _props$children === void 0 ? void 0 : _props$children.props.id) || 'defaultDialog'),
+    handle: "#customDialog",
     cancel: '[class*="MuiDialogContent-root"]'
     // onDrag={(e) => setY(e.y)}
   }, /*#__PURE__*/_react.default.createElement(_material.Paper, props));
