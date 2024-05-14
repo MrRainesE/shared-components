@@ -63,6 +63,7 @@ const useDebounce = (value, delay) => {
  * @returns {*} Het Paper element.
  */
 const PaperComponent = props => {
+  var _ref, _props$children;
   // const myRef = useRef();
   // const realProps = { ...enhancedProps };
   // delete realProps.setOffsetY;
@@ -83,7 +84,7 @@ const PaperComponent = props => {
   // }, [myRef.current?.getBoundingClientRect()]);
 
   return /*#__PURE__*/_react.default.createElement(_reactDraggable.default, {
-    handle: "".concat("#" + props.children[0].props.id),
+    handle: "".concat((_ref = "#" + (props === null || props === void 0 || (_props$children = props.children) === null || _props$children === void 0 || (_props$children = _props$children[0]) === null || _props$children === void 0 ? void 0 : _props$children.props.id)) !== null && _ref !== void 0 ? _ref : 'defaultDialog'),
     cancel: '[class*="MuiDialogContent-root"]',
     onDrag: e => setY(e.y)
   }, /*#__PURE__*/_react.default.createElement(_material.Paper, props));
@@ -103,11 +104,29 @@ const Transition = /*#__PURE__*/(0, _react.forwardRef)(function Transition(props
 });
 
 /**
- * CustomDialog component.
- * @param {*} props - De eigenschappen.
- * @returns {*} De CustomDialog component.
+ * CustomDialog2 component.
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.fullScreen - Sets the dialog to full screen.
+ * @param {Array} props.defaultButtons - An array of default buttons for the dialog.
+ * @param {ReactNode} props.extraButton - An additional component to be added in the actions.
+ * @param {ReactNode} props.content - The content to be rendered inside the dialog.
+ * @param {Object} props.paperProps - Properties for the Paper component.
+ * @param {boolean} props.open - Controls whether the dialog is open or closed.
+ * @param {function} props.handleClose - Event handler for closing the dialog.
+ * @param {function} props.handleSubmit - Event handler for submitting the dialog.
+ * @param {boolean} props.closeOnExit - Controls whether the dialog should close on exit.
+ * @param {boolean} props.closeWithIcon - Controls whether to show a close icon.
+ * @param {string} props.title - The title of the dialog.
+ * @param {boolean} props.draggable - Enables dragging functionality for the dialog.
+ * @param {boolean} props.animated - Enables slide animation when opening the dialog.
+ * @param {string} props.backgroundColor - Background color of the dialog title.
+ * @param {string} props.titleColor - Text color of the dialog title.
+ * @param {string} props.id - The id of the dialog.
+ * @param {string|boolean} props.maxWidth - Maximum width of the dialog.
+ * @param {boolean} props.fullWidth - Whether the dialog should be full width.
+ * @returns {ReactNode} The CustomDialog2 component.
  */
-function CustomDialog2(_ref) {
+function CustomDialog2(_ref2) {
   var _defaultButtons$sort;
   let {
     fullScreen,
@@ -133,7 +152,7 @@ function CustomDialog2(_ref) {
     contentStyle,
     dialogactionStyle,
     setOffsetY
-  } = _ref;
+  } = _ref2;
   const isSmallScreen = (0, _material.useMediaQuery)(_theme.default.breakpoints.down('sm'));
   return /*#__PURE__*/_react.default.createElement(_material.ThemeProvider, {
     theme: _theme.default

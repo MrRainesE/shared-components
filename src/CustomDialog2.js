@@ -93,7 +93,7 @@ const PaperComponent = (props) => {
 
     return (
         <Draggable
-            handle={`${"#" + props.children[0].props.id}`}
+            handle={`${"#" + (props?.children?.[0]?.props.id)??'defaultDialog'}`}
             cancel={'[class*="MuiDialogContent-root"]'}
             onDrag={(e) => setY(e.y)}
         >
@@ -113,9 +113,27 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 /**
- * CustomDialog component.
- * @param {*} props - De eigenschappen.
- * @returns {*} De CustomDialog component.
+ * CustomDialog2 component.
+ * @param {Object} props - The properties object.
+ * @param {boolean} props.fullScreen - Sets the dialog to full screen.
+ * @param {Array} props.defaultButtons - An array of default buttons for the dialog.
+ * @param {ReactNode} props.extraButton - An additional component to be added in the actions.
+ * @param {ReactNode} props.content - The content to be rendered inside the dialog.
+ * @param {Object} props.paperProps - Properties for the Paper component.
+ * @param {boolean} props.open - Controls whether the dialog is open or closed.
+ * @param {function} props.handleClose - Event handler for closing the dialog.
+ * @param {function} props.handleSubmit - Event handler for submitting the dialog.
+ * @param {boolean} props.closeOnExit - Controls whether the dialog should close on exit.
+ * @param {boolean} props.closeWithIcon - Controls whether to show a close icon.
+ * @param {string} props.title - The title of the dialog.
+ * @param {boolean} props.draggable - Enables dragging functionality for the dialog.
+ * @param {boolean} props.animated - Enables slide animation when opening the dialog.
+ * @param {string} props.backgroundColor - Background color of the dialog title.
+ * @param {string} props.titleColor - Text color of the dialog title.
+ * @param {string} props.id - The id of the dialog.
+ * @param {string|boolean} props.maxWidth - Maximum width of the dialog.
+ * @param {boolean} props.fullWidth - Whether the dialog should be full width.
+ * @returns {ReactNode} The CustomDialog2 component.
  */
 export default function CustomDialog2({
     fullScreen,
