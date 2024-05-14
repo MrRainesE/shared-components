@@ -154,7 +154,7 @@ export default function CustomDialog2(props) {
             fullWidth={fullWidth}
             aria-labelledby={id}
             TransitionComponent={animated ? Transition : undefined}
-            PaperComponent={draggable ? (isSmallScreen ? undefined : PaperComponent) : undefined}
+            PaperComponent={draggable ? (isSmallScreen ? Paper : PaperComponent) : Paper}
             keepMounted
             open={open}
             onClose={closeOnExit ? handleClose : null}

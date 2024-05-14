@@ -144,7 +144,7 @@ function CustomDialog2(props) {
     fullWidth: fullWidth,
     "aria-labelledby": id,
     TransitionComponent: animated ? Transition : undefined,
-    PaperComponent: draggable ? isSmallScreen ? undefined : PaperComponent : undefined,
+    PaperComponent: draggable ? isSmallScreen ? _material.Paper : PaperComponent : _material.Paper,
     keepMounted: true,
     open: open,
     onClose: closeOnExit ? handleClose : null,
