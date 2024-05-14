@@ -1,6 +1,6 @@
 {
-  "name": "evo-it-shared-components",
-  "version": "0.1.0",
+  "name": "evo-it-custom-components",
+  "version": "0.0.1",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.11.4",
