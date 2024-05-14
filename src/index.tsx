@@ -1,10 +1,4 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import CustomDialog from './CustomDialog';
-
+// import './index.css';
 // const root = ReactDOM.createRoot(
 //   document.getElementById('root') as HTMLElement
 // );
@@ -19,4 +13,4 @@ import CustomDialog from './CustomDialog';
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 // reportWebVitals();
 
-export default CustomDialog
+export {default as CustomDialog} from './CustomDialog'
