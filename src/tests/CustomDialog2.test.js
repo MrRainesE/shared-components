@@ -9,6 +9,7 @@ describe('CustomDialog2', () => {
 
     const { getByText } = render(
       <CustomDialog2
+        id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
@@ -28,6 +29,7 @@ describe('CustomDialog2', () => {
 
     const { getByText } = render(
       <CustomDialog2
+      id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
@@ -47,6 +49,7 @@ describe('CustomDialog2', () => {
 
     const { getByText } = render(
       <CustomDialog2
+      id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
@@ -66,6 +69,7 @@ describe('CustomDialog2', () => {
 
     const { getByText } = render(
       <CustomDialog2
+      id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
@@ -86,6 +90,7 @@ describe('CustomDialog2', () => {
 
     const { getByTestId } = render(
       <CustomDialog2
+      id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}

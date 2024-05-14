@@ -11,6 +11,7 @@ describe('CustomDialog2', () => {
     const {
       getByText
     } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
+      id: "testDialog",
       title: "Test Dialog",
       content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
@@ -30,6 +31,7 @@ describe('CustomDialog2', () => {
     const {
       getByText
     } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
+      id: "testDialog",
       title: "Test Dialog",
       content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
@@ -49,6 +51,7 @@ describe('CustomDialog2', () => {
     const {
       getByText
     } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
+      id: "testDialog",
       title: "Test Dialog",
       content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
@@ -68,6 +71,7 @@ describe('CustomDialog2', () => {
     const {
       getByText
     } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
+      id: "testDialog",
       title: "Test Dialog",
       content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
@@ -88,6 +92,7 @@ describe('CustomDialog2', () => {
     const {
       getByTestId
     } = (0, _react.render)( /*#__PURE__*/_react2.default.createElement(_CustomDialog.default, {
+      id: "testDialog",
       title: "Test Dialog",
       content: /*#__PURE__*/_react2.default.createElement("div", null, "Test Content"),
       open: true,
