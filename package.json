@@ -25,10 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "babel src -d dist",
+    "prepublishOnly": "npm run build"
   },
   "eslintConfig": {
     "extends": [
@@ -49,7 +47,7 @@
     ]
   },
   "description": "Shared EVO-IT components",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MrRainesE/shared-components.git"
@@ -59,5 +57,11 @@
   "bugs": {
     "url": "https://github.com/MrRainesE/shared-components/issues"
   },
-  "homepage": "https://github.com/MrRainesE/shared-components#readme"
+  "homepage": "https://github.com/MrRainesE/shared-components#readme",
+  "devDependencies": {
+    "@babel/core": "^7.24.5",
+    "@babel/preset-env": "^7.24.5",
+    "@babel/preset-react": "^7.24.1",
+    "babel-loader": "^9.1.3"
+  }
 }
