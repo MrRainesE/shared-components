@@ -179,7 +179,7 @@ function CustomDialog2(_ref) {
     hideBackdrop: hidebackdrop,
     disableEnforceFocus: true
   }, /*#__PURE__*/_react.default.createElement(_material.DialogTitle, {
-    id: id,
+    id: 'customDialog',
     style: {
       backgroundColor: backgroundColor !== null && backgroundColor !== void 0 ? backgroundColor : _theme.default.palette.primary.main,
       color: titleColor !== null && titleColor !== void 0 ? titleColor : "white",

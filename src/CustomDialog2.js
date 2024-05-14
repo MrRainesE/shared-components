@@ -180,7 +180,7 @@ export default function CustomDialog2({
             disableEnforceFocus
         >
             <DialogTitle
-                id={id}
+                id={'customDialog'}
                 style={{
                     backgroundColor: backgroundColor ?? theme.palette.primary.main,
                     color: titleColor ?? "white",
