@@ -93,9 +93,9 @@ const PaperComponent = (props) => {
 
     return (
         <Draggable
-            handle={`${"#" + (props?.children?.[0]?.props.id)??'defaultDialog'}`}
+            handle={`${"#" + (props?.children?.[0]?.props.id)||'defaultDialog'}`}
             cancel={'[class*="MuiDialogContent-root"]'}
-            onDrag={(e) => setY(e.y)}
+            // onDrag={(e) => setY(e.y)}
         >
             <Paper {...props} />
         </Draggable>

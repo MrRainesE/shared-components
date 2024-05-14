@@ -63,7 +63,7 @@ const useDebounce = (value, delay) => {
  * @returns {*} Het Paper element.
  */
 const PaperComponent = props => {
-  var _ref, _props$children;
+  var _props$children;
   // const myRef = useRef();
   // const realProps = { ...enhancedProps };
   // delete realProps.setOffsetY;
@@ -84,9 +84,9 @@ const PaperComponent = props => {
   // }, [myRef.current?.getBoundingClientRect()]);
 
   return /*#__PURE__*/_react.default.createElement(_reactDraggable.default, {
-    handle: "".concat((_ref = "#" + (props === null || props === void 0 || (_props$children = props.children) === null || _props$children === void 0 || (_props$children = _props$children[0]) === null || _props$children === void 0 ? void 0 : _props$children.props.id)) !== null && _ref !== void 0 ? _ref : 'defaultDialog'),
-    cancel: '[class*="MuiDialogContent-root"]',
-    onDrag: e => setY(e.y)
+    handle: "".concat("#" + (props === null || props === void 0 || (_props$children = props.children) === null || _props$children === void 0 || (_props$children = _props$children[0]) === null || _props$children === void 0 ? void 0 : _props$children.props.id) || 'defaultDialog'),
+    cancel: '[class*="MuiDialogContent-root"]'
+    // onDrag={(e) => setY(e.y)}
   }, /*#__PURE__*/_react.default.createElement(_material.Paper, props));
 };
 
@@ -126,7 +126,7 @@ const Transition = /*#__PURE__*/(0, _react.forwardRef)(function Transition(props
  * @param {boolean} props.fullWidth - Whether the dialog should be full width.
  * @returns {ReactNode} The CustomDialog2 component.
  */
-function CustomDialog2(_ref2) {
+function CustomDialog2(_ref) {
   var _defaultButtons$sort;
   let {
     fullScreen,
@@ -152,7 +152,7 @@ function CustomDialog2(_ref2) {
     contentStyle,
     dialogactionStyle,
     setOffsetY
-  } = _ref2;
+  } = _ref;
   const isSmallScreen = (0, _material.useMediaQuery)(_theme.default.breakpoints.down('sm'));
   return /*#__PURE__*/_react.default.createElement(_material.ThemeProvider, {
     theme: _theme.default

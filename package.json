@@ -1,6 +1,6 @@
 {
   "name": "evo-it-custom-components",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "private": false,
   "description": "Shared EVO-IT components",
   "main": "dist/index.js",
