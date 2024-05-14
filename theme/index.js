@@ -1,11 +1,11 @@
 import { createTheme } from "@mui/material/styles";
 
-import breakpoints from "theme/breakpoints";
-import overrides from "theme/overrides";
-import props from "theme/props";
-import shadows from "theme/shadows";
-import typography from "theme/typography";
-import variants from "theme/variants";
+import breakpoints from "./breakpoints";
+import overrides from "./overrides";
+import props from "./props";
+import shadows from "./shadows";
+import typography from "./typography";
+import variants from "./variants";
 
 const theme = (variant) => {
     return createTheme(
