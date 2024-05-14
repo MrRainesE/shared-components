@@ -1,5 +1,4 @@
-import { grey } from "@material-ui/core/colors";
-
+import { grey } from "@mui/material/colors";
 import { colorGreen, colorRed, mainColor, secondaryColor } from "../constants";
 
 
