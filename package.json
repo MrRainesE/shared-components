@@ -1,6 +1,6 @@
 {
   "name": "evo-it-custom-components",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "private": false,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
