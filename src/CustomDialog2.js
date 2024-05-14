@@ -23,7 +23,7 @@
  * - id: id van de dialoog
  * - fullScreen: maak dialog fullscreen. boolean
  */
-import { forwardRef, useEffect, useRef, useState } from "react";
+import React,{ forwardRef, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { Close } from "@mui/icons-material";
 import PropTypes from "prop-types";

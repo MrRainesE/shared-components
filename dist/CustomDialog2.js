@@ -4,12 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = CustomDialog2;
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
 var _reactDraggable = _interopRequireDefault(require("react-draggable"));
 var _iconsMaterial = require("@mui/icons-material");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /**
  * Dit is de CustomDialog component. Deze component kan overal geïmplementeerd worden en gevuld met een eigen component.
  * Daarnaast zijn er een aantal mogelijkheden om in te stellen:
@@ -82,11 +84,11 @@ const PaperComponent = enhancedProps => {
       setY(y);
     }
   }, [(_myRef$current2 = myRef.current) === null || _myRef$current2 === void 0 ? void 0 : _myRef$current2.getBoundingClientRect()]);
-  return /*#__PURE__*/React.createElement(_reactDraggable.default, {
+  return /*#__PURE__*/_react.default.createElement(_reactDraggable.default, {
     handle: "".concat("#" + realProps.children[0].props.id),
     cancel: '[class*="MuiDialogContent-root"]',
     onDrag: e => setY(e.y)
-  }, /*#__PURE__*/React.createElement(_material.Paper, _extends({
+  }, /*#__PURE__*/_react.default.createElement(_material.Paper, _extends({
     ref: myRef
   }, realProps)));
 };
@@ -98,7 +100,7 @@ const PaperComponent = enhancedProps => {
  * @returns {*} De transitie component.
  */
 const Transition = /*#__PURE__*/(0, _react.forwardRef)(function Transition(props, ref) {
-  return /*#__PURE__*/React.createElement(_material.Slide, _extends({
+  return /*#__PURE__*/_react.default.createElement(_material.Slide, _extends({
     direction: "up",
     ref: ref
   }, props));
@@ -138,7 +140,7 @@ function CustomDialog2(props) {
   } = props;
   const theme = (0, _material.useTheme)();
   const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down('sm'));
-  return /*#__PURE__*/React.createElement(_material.Dialog, {
+  return /*#__PURE__*/_react.default.createElement(_material.Dialog, {
     fullScreen: fullScreen,
     id: id,
     maxWidth: maxWidth,
@@ -161,7 +163,7 @@ function CustomDialog2(props) {
     },
     hideBackdrop: hidebackdrop,
     disableEnforceFocus: true
-  }, /*#__PURE__*/React.createElement(_material.DialogTitle, {
+  }, /*#__PURE__*/_react.default.createElement(_material.DialogTitle, {
     id: id,
     style: {
       backgroundColor: backgroundColor !== null && backgroundColor !== void 0 ? backgroundColor : theme.palette.primary.main,
@@ -169,18 +171,18 @@ function CustomDialog2(props) {
       cursor: draggable ? "move" : null,
       zIndex: zIndex !== null && zIndex !== void 0 ? zIndex : 0
     }
-  }, closeWithIcon ? /*#__PURE__*/React.createElement(_material.Grid, {
+  }, closeWithIcon ? /*#__PURE__*/_react.default.createElement(_material.Grid, {
     container: true,
     direction: "row",
     justifyContent: "space-between",
     alignItems: "center"
-  }, /*#__PURE__*/React.createElement(_material.Grid, {
+  }, /*#__PURE__*/_react.default.createElement(_material.Grid, {
     item: true
-  }, /*#__PURE__*/React.createElement(_material.Typography, {
+  }, /*#__PURE__*/_react.default.createElement(_material.Typography, {
     variant: "h4"
-  }, title)), /*#__PURE__*/React.createElement(_material.Grid, {
+  }, title)), /*#__PURE__*/_react.default.createElement(_material.Grid, {
     item: true
-  }, /*#__PURE__*/React.createElement(_material.IconButton
+  }, /*#__PURE__*/_react.default.createElement(_material.IconButton
   // tooltipTitle={t("general:dialog.buttons.close")}
   , {
     style: {
@@ -188,12 +190,12 @@ function CustomDialog2(props) {
     },
     size: "small",
     onClick: () => handleClose()
-  }, /*#__PURE__*/React.createElement(_iconsMaterial.Close, null)))) : title), /*#__PURE__*/React.createElement(_material.DialogContent, {
+  }, /*#__PURE__*/_react.default.createElement(_iconsMaterial.Close, null)))) : title), /*#__PURE__*/_react.default.createElement(_material.DialogContent, {
     dividers: true,
     style: {
       ...contentStyle
     }
-  }, content), /*#__PURE__*/React.createElement(_material.DialogActions, {
+  }, content), /*#__PURE__*/_react.default.createElement(_material.DialogActions, {
     style: {
       ...dialogactionStyle
     }
@@ -204,7 +206,7 @@ function CustomDialog2(props) {
   === void 0 || (_defaultButtons$sort = defaultButtons
   // Toon altijd de opslaan/toevoegen knop als eerste.
   .sort(x => x ? 1 : -1)) === null || _defaultButtons$sort === void 0 ? void 0 : _defaultButtons$sort.map(button => {
-    return /*#__PURE__*/React.createElement(_material.Button, {
+    return /*#__PURE__*/_react.default.createElement(_material.Button, {
       key: button === null || button === void 0 ? void 0 : button.label,
       disabled: button.disabled,
       variant: button.isPrimary ? "outlined" : "text",
