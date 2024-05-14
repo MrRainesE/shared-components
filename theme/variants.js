@@ -1,5 +1,5 @@
 import { grey } from "@mui/material/colors";
-import { colorGreen, colorRed, mainColor, secondaryColor } from "../constants";
+import { colorGreen, colorOrange, colorPurple, colorRed, colorYellow, disabledColor, mainColor, mainColorSelected, secondaryColor } from "../constants";
 
 
 const evoitVariant = {
