@@ -1,6 +1,6 @@
 {
   "name": "evo-it-custom-components",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": false,
   "description": "Shared EVO-IT components",
   "main": "dist/index.js",
@@ -33,7 +33,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "build": "babel --extensions .ts,.tsx ./src -d ./dist",
+    "build": "babel --extensions .ts,.tsx,.js,.jsx ./src -d ./dist",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
