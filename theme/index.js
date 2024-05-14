@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material/styles";
+
 import breakpoints from "theme/breakpoints";
 import overrides from "theme/overrides";
 import props from "theme/props";
@@ -24,6 +25,6 @@ const theme = (variant) => {
     );
 };
 
-const themes = variants;
+const themes = theme(variants[0]);
 
 export default themes;

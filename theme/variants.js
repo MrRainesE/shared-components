@@ -104,4 +104,4 @@ const evoitVariant = {
 
 const variants = [evoitVariant];
 
-export default evoitVariant;
+export default variants;
