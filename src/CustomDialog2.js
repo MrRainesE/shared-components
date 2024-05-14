@@ -39,8 +39,10 @@ import {
     Slide,
     Typography,
     Button,
-    IconButton
+    IconButton,
+    ThemeProvider
 } from "@mui/material";
+import theme from '../theme'
 
 /**
  * Hook om debounce toe te passen op een waarde.
@@ -69,29 +71,29 @@ const useDebounce = (value, delay) => {
  * @param {*} enhancedProps - Versterkte eigenschappen.
  * @returns {*} Het Paper element.
  */
-const PaperComponent = (enhancedProps) => {
+const PaperComponent = (props) => {
     const myRef = useRef();
-    const realProps = { ...enhancedProps };
-    delete realProps.setOffsetY;
-    const [y, setY] = useState();
-    const debouncedValue = useDebounce(y, 250);
+    // const realProps = { ...enhancedProps };
+    // delete realProps.setOffsetY;
+    // const [y, setY] = useState();
+    // const debouncedValue = useDebounce(y, 250);
 
-    // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
-    useEffect(() => {
-        enhancedProps?.setOffsetY && enhancedProps.setOffsetY(debouncedValue);
-    }, [debouncedValue]);
+    // // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
+    // useEffect(() => {
+    //     enhancedProps?.setOffsetY && enhancedProps.setOffsetY(debouncedValue);
+    // }, [debouncedValue]);
 
-    // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
-    useEffect(() => {
-        const y = myRef.current?.getBoundingClientRect().y;
-        if (y) {
-            setY(y);
-        }
-    }, [myRef.current?.getBoundingClientRect()]);
+    // // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
+    // useEffect(() => {
+    //     const y = myRef.current?.getBoundingClientRect().y;
+    //     if (y) {
+    //         setY(y);
+    //     }
+    // }, [myRef.current?.getBoundingClientRect()]);
 
     return (
         <Draggable
-            handle={`${"#" + realProps.children[0].props.id}`}
+            handle={`${"#" + props.children[0].props.id}`}
             cancel={'[class*="MuiDialogContent-root"]'}
             onDrag={(e) => setY(e.y)}
         >
@@ -141,10 +143,10 @@ export default function CustomDialog2(props) {
         dialogactionStyle,
         setOffsetY,
     } = props;
-    const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
    
     return (
+        <ThemeProvider theme={theme}>
         <Dialog
             fullScreen={fullScreen}
             id={id}
@@ -210,8 +212,8 @@ export default function CustomDialog2(props) {
                                     e.stopPropagation();
                                 }}
                                 style={{
-                                    color: button.disabled ? "lightgrey" : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main,
-                                    borderColor: button.disabled ? 'lightgrey' : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main,
+                                    color: button.disabled ? theme.palette.disabled.main : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main,
+                                    borderColor: button.disabled ? theme.palette.disabled.main : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main,
                                 }}
                             >
                                 {button.label}
@@ -220,6 +222,7 @@ export default function CustomDialog2(props) {
                     })}
             </DialogActions>
         </Dialog>
+        </ThemeProvider>
     );
 }
 

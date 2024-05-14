@@ -9,6 +9,7 @@ var _reactDraggable = _interopRequireDefault(require("react-draggable"));
 var _iconsMaterial = require("@mui/icons-material");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _material = require("@mui/material");
+var _theme = _interopRequireDefault(require("../theme"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
@@ -61,31 +62,28 @@ const useDebounce = (value, delay) => {
  * @param {*} enhancedProps - Versterkte eigenschappen.
  * @returns {*} Het Paper element.
  */
-const PaperComponent = enhancedProps => {
-  var _myRef$current2;
+const PaperComponent = props => {
   const myRef = (0, _react.useRef)();
-  const realProps = {
-    ...enhancedProps
-  };
-  delete realProps.setOffsetY;
-  const [y, setY] = (0, _react.useState)();
-  const debouncedValue = useDebounce(y, 250);
+  // const realProps = { ...enhancedProps };
+  // delete realProps.setOffsetY;
+  // const [y, setY] = useState();
+  // const debouncedValue = useDebounce(y, 250);
 
-  // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
-  (0, _react.useEffect)(() => {
-    (enhancedProps === null || enhancedProps === void 0 ? void 0 : enhancedProps.setOffsetY) && enhancedProps.setOffsetY(debouncedValue);
-  }, [debouncedValue]);
+  // // Zorgt ervoor dat de y wordt bepaald als er wordt gedragged.
+  // useEffect(() => {
+  //     enhancedProps?.setOffsetY && enhancedProps.setOffsetY(debouncedValue);
+  // }, [debouncedValue]);
 
-  // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
-  (0, _react.useEffect)(() => {
-    var _myRef$current;
-    const y = (_myRef$current = myRef.current) === null || _myRef$current === void 0 ? void 0 : _myRef$current.getBoundingClientRect().y;
-    if (y) {
-      setY(y);
-    }
-  }, [(_myRef$current2 = myRef.current) === null || _myRef$current2 === void 0 ? void 0 : _myRef$current2.getBoundingClientRect()]);
+  // // Zorgt ervoor dat de y wordt bepaald als de dialoog opent.
+  // useEffect(() => {
+  //     const y = myRef.current?.getBoundingClientRect().y;
+  //     if (y) {
+  //         setY(y);
+  //     }
+  // }, [myRef.current?.getBoundingClientRect()]);
+
   return /*#__PURE__*/_react.default.createElement(_reactDraggable.default, {
-    handle: "".concat("#" + realProps.children[0].props.id),
+    handle: "".concat("#" + props.children[0].props.id),
     cancel: '[class*="MuiDialogContent-root"]',
     onDrag: e => setY(e.y)
   }, /*#__PURE__*/_react.default.createElement(_material.Paper, _extends({
@@ -138,9 +136,10 @@ function CustomDialog2(props) {
     dialogactionStyle,
     setOffsetY
   } = props;
-  const theme = (0, _material.useTheme)();
-  const isSmallScreen = (0, _material.useMediaQuery)(theme.breakpoints.down('sm'));
-  return /*#__PURE__*/_react.default.createElement(_material.Dialog, {
+  const isSmallScreen = (0, _material.useMediaQuery)(_theme.default.breakpoints.down('sm'));
+  return /*#__PURE__*/_react.default.createElement(_material.ThemeProvider, {
+    theme: _theme.default
+  }, /*#__PURE__*/_react.default.createElement(_material.Dialog, {
     fullScreen: fullScreen,
     id: id,
     maxWidth: maxWidth,
@@ -166,7 +165,7 @@ function CustomDialog2(props) {
   }, /*#__PURE__*/_react.default.createElement(_material.DialogTitle, {
     id: id,
     style: {
-      backgroundColor: backgroundColor !== null && backgroundColor !== void 0 ? backgroundColor : theme.palette.primary.main,
+      backgroundColor: backgroundColor !== null && backgroundColor !== void 0 ? backgroundColor : _theme.default.palette.primary.main,
       color: titleColor !== null && titleColor !== void 0 ? titleColor : "white",
       cursor: draggable ? "move" : null,
       zIndex: zIndex !== null && zIndex !== void 0 ? zIndex : 0
@@ -215,11 +214,11 @@ function CustomDialog2(props) {
         e.stopPropagation();
       },
       style: {
-        color: button.disabled ? "lightgrey" : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main,
-        borderColor: button.disabled ? 'lightgrey' : button.isPrimary ? theme.palette.primary.main : theme.palette.error.main
+        color: button.disabled ? _theme.default.palette.disabled.main : button.isPrimary ? _theme.default.palette.primary.main : _theme.default.palette.error.main,
+        borderColor: button.disabled ? _theme.default.palette.disabled.main : button.isPrimary ? _theme.default.palette.primary.main : _theme.default.palette.error.main
       }
     }, button.label);
-  })));
+  }))));
 }
 CustomDialog2.propTypes = {
   defaultButtons: _propTypes.default.array.isRequired,
