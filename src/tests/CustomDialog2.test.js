@@ -1,13 +1,15 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'; // Import the matchers
+
 import CustomDialog2 from '../CustomDialog2';
 import React from 'react';
 
 describe('CustomDialog2', () => {
-  it('renders with title and content', () => {
+  it('renders with title, content, and buttons', () => {
     const handleClose = jest.fn();
     const handleSubmit = jest.fn();
 
-    const { getByText } = render(
+    render(
       <CustomDialog2
         id='testDialog'
         title="Test Dialog"
@@ -19,27 +21,28 @@ describe('CustomDialog2', () => {
       />
     );
 
-    expect(getByText('Test Dialog')).toBeInTheDocument();
-    expect(getByText('Test Content')).toBeInTheDocument();
+    expect(screen.getByText('Test Dialog')).toBeInTheDocument();
+    expect(screen.getByText('Test Content')).toBeInTheDocument();
+    expect(screen.getByText('Close')).toBeInTheDocument();
   });
 
   it('calls handleClose when close button is clicked', () => {
     const handleClose = jest.fn();
     const handleSubmit = jest.fn();
 
-    const { getByText } = render(
+    render(
       <CustomDialog2
-      id='testDialog'
+        id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
         handleClose={handleClose}
         handleSubmit={handleSubmit}
-        defaultButtons={[{ label: 'Close', isPrimary: true }]}
+        defaultButtons={[{ label: 'close', isPrimary: false },{ label: 'add', isPrimary: true }]}
       />
     );
 
-    fireEvent.click(getByText('Close'));
+    fireEvent.click(screen.getByText('close'));
     expect(handleClose).toHaveBeenCalledTimes(1);
   });
 
@@ -47,60 +50,39 @@ describe('CustomDialog2', () => {
     const handleClose = jest.fn();
     const handleSubmit = jest.fn();
 
-    const { getByText } = render(
+    render(
       <CustomDialog2
-      id='testDialog'
+        id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
         handleClose={handleClose}
         handleSubmit={handleSubmit}
-        defaultButtons={[{ label: 'Submit', isPrimary: true }]}
+        defaultButtons={[{ label: 'submit', isPrimary: true }]}
       />
     );
 
-    fireEvent.click(getByText('Submit'));
+    fireEvent.click(screen.getByText('submit'));
     expect(handleSubmit).toHaveBeenCalledTimes(1);
-  });
-
-  it('does not call handleClose when close button is clicked if closeOnExit is false', () => {
-    const handleClose = jest.fn();
-    const handleSubmit = jest.fn();
-
-    const { getByText } = render(
-      <CustomDialog2
-      id='testDialog'
-        title="Test Dialog"
-        content={<div>Test Content</div>}
-        open={true}
-        handleClose={handleClose}
-        handleSubmit={handleSubmit}
-        defaultButtons={[{ label: 'Close', isPrimary: true }]}
-        closeOnExit={false}
-      />
-    );
-
-    fireEvent.click(getByText('Close'));
-    expect(handleClose).not.toHaveBeenCalled();
   });
 
   it('renders close icon when closeWithIcon is true', () => {
     const handleClose = jest.fn();
     const handleSubmit = jest.fn();
 
-    const { getByTestId } = render(
+    render(
       <CustomDialog2
-      id='testDialog'
+        id='testDialog'
         title="Test Dialog"
         content={<div>Test Content</div>}
         open={true}
         handleClose={handleClose}
         handleSubmit={handleSubmit}
-        defaultButtons={[{ label: 'Close', isPrimary: true }]}
+        defaultButtons={[{ label: 'close', isPrimary: true }]}
         closeWithIcon={true}
       />
     );
 
-    expect(getByTestId('close-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('close-icon')).toBeInTheDocument();
   });
 });

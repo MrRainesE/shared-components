@@ -1,3 +1,8 @@
+/**
+ * CustomDialog component.
+ * @module CustomDialog
+ */
+
 import React, { MouseEvent, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 import { 
@@ -96,7 +101,39 @@ const Transition = React.forwardRef(function Transition(
     return <Slide direction="up" ref={ref} {...props} />;
   });
 
-  
+/**
+ * Props for CustomDialog component.
+ * @typedef {Object} CustomDialogProps
+ * @property {boolean} [fullScreen] - Indicates whether the dialog should be displayed in full screen.
+ * @property {boolean} [defaultButtons] - Default buttons to be displayed in the dialog.
+ * @property {React.ReactNode} [extraButton] - Additional button to be displayed in the dialog.
+ * @property {React.ReactNode} [content] - Content of the dialog.
+ * @property {object} [paperProps] - Props applied to the Paper component.
+ * @property {boolean} open - Indicates whether the dialog is open.
+ * @property {Function} handleClose - Callback function to handle dialog closing.
+ * @property {Function} handleSubmit - Callback function to handle form submission.
+ * @property {boolean} [closeOnExit] - Indicates whether the dialog should be closed on exit.
+ * @property {boolean} [closeWithIcon] - Indicates whether to display close icon.
+ * @property {string} [title] - Title of the dialog.
+ * @property {boolean} [draggable] - Indicates whether the dialog should be draggable.
+ * @property {boolean} [animated] - Indicates whether the dialog should be animated.
+ * @property {string} [backgroundColor] - Background color of the dialog title.
+ * @property {string} [titleColor] - Color of the dialog title text.
+ * @property {string} [id] - Id of the dialog.
+ * @property {number} [maxWidth] - Maximum width of the dialog.
+ * @property {boolean} [fullWidth] - Indicates whether the dialog should be full width.
+ * @property {boolean} [hidebackdrop] - Indicates whether to hide the backdrop.
+ * @property {number} [zIndex] - Z-index of the dialog.
+ * @property {object} [contentStyle] - Style applied to the dialog content.
+ * @property {object} [dialogactionStyle] - Style applied to the dialog actions.
+ * @property {Function} [setOffsetY] - Callback function to set Y offset.
+ */
+
+/**
+ * CustomDialog component.
+ * @param {CustomDialogProps} props - Component props.
+ * @returns {JSX.Element} - Rendered component.
+ */  
 const CustomDialog: React.FC<CustomDialogProps> = ({
     fullScreen,
     defaultButtons,

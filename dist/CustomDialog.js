@@ -11,7 +11,10 @@ var _iconsMaterial = require("@mui/icons-material");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
-function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); } /**
+ * CustomDialog component.
+ * @module CustomDialog
+ */
 const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = (0, _react.useState)(value);
   (0, _react.useEffect)(() => {
@@ -59,6 +62,40 @@ const Transition = /*#__PURE__*/_react.default.forwardRef(function Transition(pr
     ref: ref
   }, props));
 });
+
+/**
+ * Props for CustomDialog component.
+ * @typedef {Object} CustomDialogProps
+ * @property {boolean} [fullScreen] - Indicates whether the dialog should be displayed in full screen.
+ * @property {boolean} [defaultButtons] - Default buttons to be displayed in the dialog.
+ * @property {React.ReactNode} [extraButton] - Additional button to be displayed in the dialog.
+ * @property {React.ReactNode} [content] - Content of the dialog.
+ * @property {object} [paperProps] - Props applied to the Paper component.
+ * @property {boolean} open - Indicates whether the dialog is open.
+ * @property {Function} handleClose - Callback function to handle dialog closing.
+ * @property {Function} handleSubmit - Callback function to handle form submission.
+ * @property {boolean} [closeOnExit] - Indicates whether the dialog should be closed on exit.
+ * @property {boolean} [closeWithIcon] - Indicates whether to display close icon.
+ * @property {string} [title] - Title of the dialog.
+ * @property {boolean} [draggable] - Indicates whether the dialog should be draggable.
+ * @property {boolean} [animated] - Indicates whether the dialog should be animated.
+ * @property {string} [backgroundColor] - Background color of the dialog title.
+ * @property {string} [titleColor] - Color of the dialog title text.
+ * @property {string} [id] - Id of the dialog.
+ * @property {number} [maxWidth] - Maximum width of the dialog.
+ * @property {boolean} [fullWidth] - Indicates whether the dialog should be full width.
+ * @property {boolean} [hidebackdrop] - Indicates whether to hide the backdrop.
+ * @property {number} [zIndex] - Z-index of the dialog.
+ * @property {object} [contentStyle] - Style applied to the dialog content.
+ * @property {object} [dialogactionStyle] - Style applied to the dialog actions.
+ * @property {Function} [setOffsetY] - Callback function to set Y offset.
+ */
+
+/**
+ * CustomDialog component.
+ * @param {CustomDialogProps} props - Component props.
+ * @returns {JSX.Element} - Rendered component.
+ */
 const CustomDialog = _ref => {
   var _defaultButtons$sort;
   let {

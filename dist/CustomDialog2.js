@@ -197,15 +197,18 @@ function CustomDialog2(_ref) {
     variant: "h4"
   }, title)), /*#__PURE__*/_react.default.createElement(_material.Grid, {
     item: true
-  }, /*#__PURE__*/_react.default.createElement(_material.IconButton
-  // tooltipTitle={t("general:dialog.buttons.close")}
-  , {
+  }, /*#__PURE__*/_react.default.createElement(_material.IconButton, {
+    "data-testid": "close-icon"
+    // tooltipTitle={t("general:dialog.buttons.close")}
+    ,
     style: {
       color: "white"
     },
     size: "small",
     onClick: () => handleClose()
-  }, /*#__PURE__*/_react.default.createElement(_iconsMaterial.Close, null)))) : title), /*#__PURE__*/_react.default.createElement(_material.DialogContent, {
+  }, /*#__PURE__*/_react.default.createElement(_iconsMaterial.Close, {
+    id: "close-icon"
+  })))) : title), /*#__PURE__*/_react.default.createElement(_material.DialogContent, {
     dividers: true,
     style: {
       ...contentStyle

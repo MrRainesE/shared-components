@@ -195,12 +195,13 @@ export default function CustomDialog2({
                         </Grid>
                         <Grid item>
                             <IconButton
+                              data-testid="close-icon" 
                                 // tooltipTitle={t("general:dialog.buttons.close")}
                                 style={{ color: "white" }}
                                 size="small"
                                 onClick={() => handleClose()}
                             >
-                                <Close />
+                                <Close id='close-icon'/>
                             </IconButton>
                         </Grid>
                     </Grid>
